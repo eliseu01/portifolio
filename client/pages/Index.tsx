@@ -121,10 +121,10 @@ export default function Index() {
 
   const navItems = [
     { id: 'about', label: 'Sobre Mim', hasArrow: true },
-    { id: 'skills', label: 'Competências' },
-    { id: 'projects', label: 'Projetos' },
-    { id: 'certifications', label: 'Certificações' },
-    { id: 'contact', label: 'Contato' },
+    { id: 'skills', label: 'Competências', hasArrow: true },
+    { id: 'projects', label: 'Projetos', hasArrow: true },
+    { id: 'certifications', label: 'Certificações', hasArrow: true },
+    { id: 'contact', label: 'Contato', hasArrow: true },
   ];
 
   return (
