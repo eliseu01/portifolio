@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Database, Code, Menu, X, ChevronRight, Send, User, Mail, MessageSquare, Github, ExternalLink } from "lucide-react";
+import { Database, Code, Menu, X, ChevronRight, Send, User, Mail, MessageSquare, Github, ExternalLink, Sun, Moon } from "lucide-react";
+import { useTheme } from "../hooks/useTheme";
 
 // Project data with technology tags
 const projects = [
@@ -79,6 +80,7 @@ export default function Index() {
   const [underlineStyle, setUnderlineStyle] = useState({});
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const navRef = useRef(null);
+  const { theme, toggleTheme, isDark } = useTheme();
 
   // Track active section for navigation and calculate underline position
   useEffect(() => {
@@ -161,11 +163,11 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       {/* Header with enhanced navigation and bottom underline */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-light/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-black transition-colors duration-300 ease-in-out hover:text-orange">{"{eli}"}</div>
+          <div className="text-2xl font-bold text-foreground transition-colors duration-300 ease-in-out hover:text-orange">{"{eli}"}</div>
           
           {/* Desktop Navigation with moving underline at bottom of header */}
           <div className="hidden lg:flex items-center space-x-8 relative" ref={navRef}>
@@ -175,7 +177,7 @@ export default function Index() {
                 data-section={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`relative text-xl font-bold transition-all duration-300 ease-in-out flex items-center gap-2 ${
-                  activeSection === item.id ? 'text-orange' : 'text-black hover:text-orange'
+                  activeSection === item.id ? 'text-orange' : 'text-foreground hover:text-orange'
                 }`}
               >
                 {item.hasArrow && (
@@ -186,15 +188,33 @@ export default function Index() {
                 {item.label}
               </button>
             ))}
+            
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="ml-4 p-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-all duration-300 ease-in-out hover:scale-110"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 transition-transform duration-300 ease-in-out hover:scale-110"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-all duration-300 ease-in-out hover:scale-110"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 transition-transform duration-300 ease-in-out hover:scale-110"
+            >
+              {isMenuOpen ? <X className="w-6 h-6 text-foreground" /> : <Menu className="w-6 h-6 text-foreground" />}
+            </button>
+          </div>
         </nav>
 
         {/* Moving underline bar at bottom of header */}
@@ -206,7 +226,7 @@ export default function Index() {
         </div>
 
         {/* Mobile Menu with smooth animation */}
-        <div className={`lg:hidden bg-white border-t transition-all duration-300 ease-in-out overflow-hidden ${
+        <div className={`lg:hidden bg-background border-t border-border transition-all duration-300 ease-in-out overflow-hidden ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="px-6 py-4 space-y-4">
@@ -215,7 +235,7 @@ export default function Index() {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`block text-lg font-medium transition-all duration-300 ease-in-out ${
-                  activeSection === item.id ? 'text-orange font-bold' : 'text-black hover:text-orange'
+                  activeSection === item.id ? 'text-orange font-bold' : 'text-foreground hover:text-orange'
                 }`}
               >
                 {item.label}
@@ -226,19 +246,19 @@ export default function Index() {
       </header>
 
       {/* Hero Section with improved spacing */}
-      <section id="about" className="pt-32 pb-16 bg-white">
+      <section id="about" className="pt-32 pb-16 bg-background">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Mobile: Image first, Desktop: Text first */}
             <div className="order-2 lg:order-1 space-y-8 lg:pr-12">
-              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-black leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-foreground leading-tight">
                 HEY! EU SOU<br />
                 ELISEU COELHO.
               </h1>
               <p className="text-xl md:text-2xl font-bold lg:font-extrabold text-orange-lighter">
                 Analista de Dados & Dev Back-End
               </p>
-              <p className="text-base md:text-lg lg:text-lg text-black leading-relaxed max-w-2xl font-light lg:font-normal">
+              <p className="text-base md:text-lg lg:text-lg text-foreground leading-relaxed max-w-2xl font-light lg:font-normal opacity-90">
                 Sou um desenvolvedor em formação com foco em back-end, dados e uma base sólida em front-end. 
                 Atuo na interseção entre engenharia de software e análise de dados, buscando criar soluções escaláveis,
                 eficientes e com boa experiência para o usuário.
@@ -292,7 +312,7 @@ export default function Index() {
       </section>
 
       {/* Skills Section with technology hover effects */}
-      <section id="skills" className="py-20 bg-dark-section text-white">
+      <section id="skills" className={`py-20 ${isDark ? 'bg-card' : 'bg-dark-section'} text-white`}>
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center mb-16">Competências</h2>
           
@@ -356,15 +376,15 @@ export default function Index() {
       </section>
 
       {/* Projects Section with enhanced cards and modal */}
-      <section id="projects" className="py-20 bg-white">
+      <section id="projects" className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center text-black mb-16">Projetos</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center text-foreground mb-16">Projetos</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {projects.map((project) => (
               <div 
                 key={project.id} 
-                className="bg-gray-light rounded-3xl shadow-xl overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer"
+                className="bg-card rounded-3xl shadow-xl overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer border border-border"
                 onClick={() => openProjectModal(project)}
               >
                 <img 
@@ -373,7 +393,7 @@ export default function Index() {
                   className="w-full h-48 lg:h-64 object-cover"
                 />
                 <div className="p-6 lg:p-8">
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold lg:font-extrabold text-black mb-3">{project.title}</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold lg:font-extrabold text-foreground mb-3">{project.title}</h3>
                   
                   {/* Technology pills */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -387,7 +407,7 @@ export default function Index() {
                     ))}
                   </div>
                   
-                  <p className="text-base md:text-lg lg:text-xl text-gray-text mb-6 leading-relaxed font-light lg:font-normal">
+                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-6 leading-relaxed font-light lg:font-normal">
                     {project.description.substring(0, 120)}...
                   </p>
                   
@@ -410,15 +430,15 @@ export default function Index() {
           onClick={closeProjectModal}
         >
           <div 
-            className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl transform transition-all duration-300 ease-in-out scale-100"
+            className="bg-background rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl transform transition-all duration-300 ease-in-out scale-100 border border-border"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
               <button
                 onClick={closeProjectModal}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-white hover:scale-110"
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-background/90 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-background hover:scale-110 border border-border"
               >
-                <X className="w-6 h-6 text-black" />
+                <X className="w-6 h-6 text-foreground" />
               </button>
               
               <img 
@@ -429,7 +449,7 @@ export default function Index() {
             </div>
             
             <div className="p-8 pb-32">
-              <h3 className="text-3xl lg:text-4xl font-bold text-black mb-4">{selectedProject.title}</h3>
+              <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">{selectedProject.title}</h3>
               
               {/* Technology pills */}
               <div className="flex flex-wrap gap-2 mb-6">
@@ -443,18 +463,18 @@ export default function Index() {
                 ))}
               </div>
               
-              <p className="text-lg lg:text-xl text-gray-text leading-relaxed mb-8">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8">
                 {selectedProject.description}
               </p>
             </div>
 
             {/* Fixed bottom buttons */}
-            <div className="absolute bottom-0 left-0 right-0 bg-white border-t p-6 flex gap-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-background border-t border-border p-6 flex gap-4">
               <a
                 href={selectedProject.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-gray-800 text-white px-6 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition-all duration-300 ease-in-out hover:bg-gray-700 hover:shadow-lg"
+                className="flex-1 bg-secondary text-foreground px-6 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition-all duration-300 ease-in-out hover:bg-secondary/80 hover:shadow-lg border border-border"
               >
                 <Github className="w-5 h-5" />
                 GitHub
@@ -474,7 +494,7 @@ export default function Index() {
       )}
 
       {/* Certifications Section with hover effects */}
-      <section id="certifications" className="py-20 bg-dark-section text-white">
+      <section id="certifications" className={`py-20 ${isDark ? 'bg-card' : 'bg-dark-section'} text-white`}>
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center mb-16">Certificações</h2>
           
@@ -482,7 +502,7 @@ export default function Index() {
             {[1, 2, 3, 4, 5, 6].map((cert) => (
               <div 
                 key={cert} 
-                className="bg-dark-section border-2 border-gray-500 rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:border-orange/30"
+                className={`${isDark ? 'bg-background border-border' : 'bg-dark-section border-gray-500'} border-2 rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:border-orange/30`}
               >
                 <div className="flex">
                   <div className="w-1/3 bg-white rounded-l-3xl flex items-center justify-center p-6">
@@ -506,46 +526,46 @@ export default function Index() {
       </section>
 
       {/* Contact Section with success message */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="contact" className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center text-black mb-4">Contato</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center text-foreground mb-4">Contato</h2>
           <p className="text-xl md:text-2xl lg:text-3xl font-bold lg:font-extrabold text-orange text-center mb-12">Mande-me uma mensagem!</p>
           
           <form onSubmit={handleContactSubmit} className="max-w-4xl mx-auto space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-black mb-4">
-                  <User className="w-6 h-6 md:w-8 md:h-8 text-black/80" />
+                <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-foreground mb-4">
+                  <User className="w-6 h-6 md:w-8 md:h-8 text-foreground/80" />
                   Seu nome
                 </label>
                 <input 
                   type="text" 
                   placeholder="Coloque seu nome"
-                  className="w-full px-4 md:px-6 py-3 md:py-4 lg:py-6 rounded-xl bg-gray-medium text-lg md:text-xl lg:text-2xl placeholder-black/25 border-none outline-none transition-all duration-300 ease-in-out focus:ring-2 focus:ring-orange focus:shadow-lg"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 lg:py-6 rounded-xl bg-secondary text-lg md:text-xl lg:text-2xl placeholder-muted-foreground border border-border outline-none transition-all duration-300 ease-in-out focus:ring-2 focus:ring-orange focus:shadow-lg"
                 />
               </div>
               <div>
-                <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-black mb-4">
-                  <Mail className="w-6 h-6 md:w-8 md:h-8 text-black/80" />
+                <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-foreground mb-4">
+                  <Mail className="w-6 h-6 md:w-8 md:h-8 text-foreground/80" />
                   Seu email
                 </label>
                 <input 
                   type="email" 
                   placeholder="Coloque seu email"
-                  className="w-full px-4 md:px-6 py-3 md:py-4 lg:py-6 rounded-xl bg-gray-medium text-lg md:text-xl lg:text-2xl placeholder-black/25 border-none outline-none transition-all duration-300 ease-in-out focus:ring-2 focus:ring-orange focus:shadow-lg"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 lg:py-6 rounded-xl bg-secondary text-lg md:text-xl lg:text-2xl placeholder-muted-foreground border border-border outline-none transition-all duration-300 ease-in-out focus:ring-2 focus:ring-orange focus:shadow-lg"
                 />
               </div>
             </div>
             
             <div>
-              <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-black mb-4">
-                <MessageSquare className="w-6 h-6 md:w-8 md:h-8 text-black/80" />
+              <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-foreground mb-4">
+                <MessageSquare className="w-6 h-6 md:w-8 md:h-8 text-foreground/80" />
                 Sua mensagem
               </label>
               <textarea 
                 rows={6}
                 placeholder="Olá, acreditamos que seu perfil pode ser ideal para um projeto de integração de sistemas que temos em andamento. Podemos marcar uma call?"
-                className="w-full px-4 md:px-6 py-3 md:py-4 lg:py-6 rounded-xl bg-gray-medium text-lg md:text-xl lg:text-2xl placeholder-black/25 border-none outline-none resize-none transition-all duration-300 ease-in-out focus:ring-2 focus:ring-orange focus:shadow-lg"
+                className="w-full px-4 md:px-6 py-3 md:py-4 lg:py-6 rounded-xl bg-secondary text-lg md:text-xl lg:text-2xl placeholder-muted-foreground border border-border outline-none resize-none transition-all duration-300 ease-in-out focus:ring-2 focus:ring-orange focus:shadow-lg"
               ></textarea>
             </div>
 
@@ -563,7 +583,7 @@ export default function Index() {
             <div className={`text-center transition-all duration-500 ease-in-out ${
               showSuccessMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
-              <p className="text-lg md:text-xl lg:text-2xl font-semibold text-green-600 bg-green-50 px-6 py-3 rounded-lg inline-block">
+              <p className="text-lg md:text-xl lg:text-2xl font-semibold text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400 px-6 py-3 rounded-lg inline-block">
                 Mensagem enviada com sucesso
               </p>
             </div>
@@ -572,7 +592,7 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-16">
+      <footer className={`${isDark ? 'bg-card' : 'bg-black'} text-white py-16 border-t border-border`}>
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -622,7 +642,7 @@ export default function Index() {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+          <div className="border-t border-gray-800 dark:border-border mt-12 pt-8 text-center">
             <p className="text-base md:text-lg lg:text-xl font-light lg:font-normal">
               © 2025 | Projetado e desenvolvido por Eliseu Coelho | Todos os direitos reservados.
             </p>
