@@ -182,16 +182,19 @@ export default function Index() {
         `[data-section="${activeSection}"]`,
       );
       if (activeButton) {
-        const headerRect = headerRef.current.getBoundingClientRect();
-        const buttonRect = activeButton.getBoundingClientRect();
+        const textElement = activeButton.querySelector('[data-text-for-underline]');
+        if (textElement) {
+          const headerRect = headerRef.current.getBoundingClientRect();
+          const textRect = textElement.getBoundingClientRect();
 
-        const left = buttonRect.left - headerRect.left;
-        const width = buttonRect.width;
+          const left = textRect.left - headerRect.left;
+          const width = textRect.width;
 
-        setUnderlineStyle({
-          left: `${left}px`,
-          width: `${width}px`,
-        });
+          setUnderlineStyle({
+            left: `${left}px`,
+            width: `${width}px`,
+          });
+        }
       }
     }
   }, [activeSection, isMenuOpen]);
@@ -226,10 +229,10 @@ export default function Index() {
 
   const navItems = [
     { id: "about", label: "Sobre Mim", hasArrow: true },
-    { id: "skills", label: "Competências" },
-    { id: "projects", label: "Projetos" },
-    { id: "certifications", label: "Certificações" },
-    { id: "contact", label: "Contato" },
+    { id: "skills", label: "Competências", hasArrow: true  },
+    { id: "projects", label: "Projetos", hasArrow: true  },
+    { id: "certifications", label: "Certificações", hasArrow: true  },
+    { id: "contact", label: "Contato", hasArrow: true  },
   ];
 
   return (
@@ -266,7 +269,7 @@ export default function Index() {
                     }`}
                   />
                 )}
-                {item.label}
+                <span data-text-for-underline>{item.label}</span>
               </button>
             ))}
 
