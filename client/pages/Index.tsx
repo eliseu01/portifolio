@@ -182,7 +182,9 @@ export default function Index() {
         `[data-section="${activeSection}"]`,
       );
       if (activeButton) {
-        const textElement = activeButton.querySelector('[data-text-for-underline]');
+        const textElement = activeButton.querySelector(
+          "[data-text-for-underline]",
+        );
         if (textElement) {
           const headerRect = headerRef.current.getBoundingClientRect();
           const textRect = textElement.getBoundingClientRect();
@@ -229,16 +231,19 @@ export default function Index() {
 
   const navItems = [
     { id: "about", label: "Sobre Mim", hasArrow: true },
-    { id: "skills", label: "Competências", hasArrow: true  },
-    { id: "projects", label: "Projetos", hasArrow: true  },
-    { id: "certifications", label: "Certificações", hasArrow: true  },
-    { id: "contact", label: "Contato", hasArrow: true  },
+    { id: "skills", label: "Competências", hasArrow: true },
+    { id: "projects", label: "Projetos", hasArrow: true },
+    { id: "certifications", label: "Certificações", hasArrow: true },
+    { id: "contact", label: "Contato", hasArrow: true },
   ];
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       {/* Header with enhanced navigation and bottom underline */}
-      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border">
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border"
+      >
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-foreground transition-colors duration-300 ease-in-out hover:text-orange">
             {"{eli}"}
@@ -256,7 +261,9 @@ export default function Index() {
                 onClick={() => scrollToSection(item.id)}
                 className={`relative text-xl font-bold transition-all duration-300 ease-in-out flex items-center gap-2 ${
                   activeSection === item.id
-                    ? "text-orange"
+                    ? isDark
+                      ? "text-white"
+                      : "text-black"
                     : "text-foreground hover:text-orange"
                 }`}
               >
@@ -420,62 +427,66 @@ export default function Index() {
         className={`py-20 ${isDark ? "bg-card" : "bg-dark-section"} text-white`}
       >
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center mb-4 lg:mb-16">
             Competências
           </h2>
 
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="">
+            <div className="grid lg:grid-cols-2 gap-32 lg:gap-40 items-start">
               {/* Left side: Stacked text blocks */}
               <div className="space-y-12">
                 {/* Data Analysis */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                  <Database className="w-12 h-12 text-white" />
-                  <div className="relative py-[20px]">
-                    <div className="relative flex flex-col items-center py-[20px]">
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal text-center">
-                      Análise de Dados
-                    </h3>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-orange w-[93%] rounded-full"></div>
+                    <Database className="w-8 h-8 lg:w-12 lg:h-12 text-white" />
+                    <div className="relative py-[20px]">
+                      <div className="relative flex flex-col items-center py-[20px]">
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal text-center">
+                          Análise de Dados
+                        </h3>
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-orange w-[93%] rounded-full"></div>
+                      </div>
                     </div>
                   </div>
-                  </div>
-                  <div className="pl-[64px]"> {/* 48px icon + 8px gap */}
-                  <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light lg:font-normal">
-                    Transformo dados em decisões. Trabalho com coleta, limpeza,
-                    análise e visualização de dados, extraindo insights que
-                    apoiam estratégias de negócio.
-                  </p>
+                  <div className="pl-[48px]  lg:pl-[64px]">
+                    {" "}
+                    {/* 48px icon + 8px gap */}
+                    <p className="text-lg text-base md:text-xl lg:text-2xl  leading-relaxed font-medium lg:font-medium">
+                      Transformo dados em decisões. Trabalho com coleta,
+                      limpeza, análise e visualização de dados, extraindo
+                      insights que apoiam estratégias de negócio.
+                    </p>
                   </div>
                 </div>
 
                 {/* Backend Development */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                  <Code className="w-12 h-12 text-white" />
-                  <div className="relative py-[20px]">
-                    <div className="relative flex flex-col items-center py-[20px]">
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal text-center">
-                      Dev Back-End
-                    </h3>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-orange w-[93%] rounded-full"></div>
+                    <Code className="w-8 h-8 lg:w-12 lg:h-12 text-white" />
+                    <div className="relative py-[20px]">
+                      <div className="relative flex flex-col items-center py-[20px]">
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal text-center">
+                          Dev Back-End
+                        </h3>
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-orange w-[93%] rounded-full"></div>
+                      </div>
                     </div>
                   </div>
-                  </div>
-                  <div className="pl-[64px]"> {/* 48px icon + 8px gap */}
-                  <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light lg:font-normal">
-                    Crio e dou manutenção a APIs e sistemas robustos. Tenho foco
-                    em desempenho, segurança e organização de dados, integrando
-                    lógicas de negócio com bancos e serviços.
-                  </p>
+                  <div className=" pl-[48px] lg:pl-[64px]">
+                    {" "}
+                    {/* 48px icon + 8px gap */}
+                    <p className="text-lg text-base md:text-xl lg:text-2xl leading-relaxed font-medium lg:font-medium">
+                      Crio e dou manutenção a APIs e sistemas robustos. Tenho
+                      foco em desempenho, segurança e organização de dados,
+                      integrando lógicas de negócio com bancos e serviços.
+                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Right side: 3x3 technology grid with enhanced hover effects */}
               <div className="flex justify-center lg:justify-end">
-                <div className="grid grid-cols-3 gap-[62px]">
+                <div className="grid grid-cols-3 gap-[48px] lg:gap-[62px]">
                   {technologies.map((tech, index) => (
                     <div
                       key={index}
@@ -544,7 +555,7 @@ export default function Index() {
                   {/* Animated button */}
                   <button className="group bg-orange text-white px-6 py-3 rounded-full font-poppins font-semibold text-lg flex items-center gap-2 transition-all duration-300 ease-in-out hover:bg-orange/90 hover:shadow-lg relative overflow-hidden">
                     <ChevronRight className="w-5 h-5 transition-all duration-300 ease-in-out group-hover:translate-x-1" />
-                    <span className="transition-all duration-300 ease-in-out group-hover:translate-x-1">
+                    <span className="transition-all duration-300 ease-in-out group-hover:translate-x-1 ">
                       Ver projeto
                     </span>
                   </button>
@@ -637,7 +648,7 @@ export default function Index() {
             Certificações
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((cert) => (
               <div
                 key={cert}
@@ -648,7 +659,7 @@ export default function Index() {
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/215381f71beda57e584ac927a1150d78f584b669?width=180"
                       alt="Oracle Certificate"
-                      className="w-16 h-16 object-contain"
+                      className="w-20 h-20 object-contain"
                     />
                   </div>
                   <div className="flex-1 p-6">
