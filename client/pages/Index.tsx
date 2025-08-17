@@ -339,7 +339,7 @@ export default function Index() {
                     <Code className="w-12 h-12 text-white" />
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal">Dev Back-End</h3>
                   </div>
-                  <div className="h-1 w-64 bg-orange py-36"></div>
+                  <div className="h-1 w-64 bg-orange"></div>
                   <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light lg:font-normal">
                     Crio e dou manutenção a APIs e sistemas robustos. Tenho foco em desempenho, segurança e organização 
                     de dados, integrando lógicas de negócio com bancos e serviços.
