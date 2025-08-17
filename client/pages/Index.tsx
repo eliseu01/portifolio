@@ -142,6 +142,7 @@ export default function Index() {
   const [underlineStyle, setUnderlineStyle] = useState({});
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const navRef = useRef(null);
+  const headerRef = useRef(null);
   const { theme, toggleTheme, isDark } = useTheme();
 
   // Track active section for navigation and calculate underline position
@@ -176,16 +177,15 @@ export default function Index() {
 
   // Calculate underline position based on active section
   useEffect(() => {
-    if (navRef.current) {
+    if (navRef.current && headerRef.current) {
       const activeButton = navRef.current.querySelector(
         `[data-section="${activeSection}"]`,
       );
       if (activeButton) {
-        const navContainer = navRef.current;
-        const containerRect = navContainer.getBoundingClientRect();
+        const headerRect = headerRef.current.getBoundingClientRect();
         const buttonRect = activeButton.getBoundingClientRect();
 
-        const left = buttonRect.left - containerRect.left;
+        const left = buttonRect.left - headerRect.left;
         const width = buttonRect.width;
 
         setUnderlineStyle({
@@ -235,7 +235,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       {/* Header with enhanced navigation and bottom underline */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border">
+      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-foreground transition-colors duration-300 ease-in-out hover:text-orange">
             {"{eli}"}
@@ -313,7 +313,7 @@ export default function Index() {
         {/* Moving underline bar at bottom of header */}
         <div className="hidden lg:block relative h-1">
           <div
-            className="absolute bottom-0 h-1 bg-orange transition-all duration-300 ease-in-out"
+            className="absolute bottom-0 h-1 bg-orange transition-all duration-300 ease-in-out rounded-full"
             style={underlineStyle}
           />
         </div>
