@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Database, Code, Menu, X, ChevronRight, Send, User, Mail, MessageSquare, Github, ExternalLink } from "lucide-react";
 
 // Project data with technology tags
@@ -61,23 +61,26 @@ const projects = [
 
 // Technology icons data
 const technologies = [
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/5edf31807ed94d54c05b8600270482b298061486?width=200", alt: "Python" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/f3ce4a13da491f4dba0abdba4308f49475964850?width=198", alt: "JavaScript" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/b5418d22a726b275f48d75ced6a2108e7b76e151?width=130", alt: "SQL" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/1f7c18b4abbccf6618feae0126bcfe9baf30b7a5?width=158", alt: "React" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/f4a8a02c15e925dfd78a1218116175f327a1efd9?width=166", alt: "Node.js" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/b5054e07e41b2aad9bce03542e37ff6e56cdc56b?width=178", alt: "Django" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/c65cf2e6b83816aa44e52ab8a87aef0c375ef8d2?width=200", alt: "MongoDB" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/cd4e9e18c3cf72c97fa889b03081a3badd52e899?width=210", alt: "PostgreSQL" },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/da3f0d0b148ca00ec4f9b5b545eb505db039087e?width=218", alt: "Docker" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/5edf31807ed94d54c05b8600270482b298061486?width=200", alt: "Python", name: "Python" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/f3ce4a13da491f4dba0abdba4308f49475964850?width=198", alt: "JavaScript", name: "JavaScript" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/b5418d22a726b275f48d75ced6a2108e7b76e151?width=130", alt: "SQL", name: "SQL" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/1f7c18b4abbccf6618feae0126bcfe9baf30b7a5?width=158", alt: "React", name: "React" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/f4a8a02c15e925dfd78a1218116175f327a1efd9?width=166", alt: "Node.js", name: "Node.js" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/b5054e07e41b2aad9bce03542e37ff6e56cdc56b?width=178", alt: "Django", name: "Django" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/c65cf2e6b83816aa44e52ab8a87aef0c375ef8d2?width=200", alt: "MongoDB", name: "MongoDB" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/cd4e9e18c3cf72c97fa889b03081a3badd52e899?width=210", alt: "PostgreSQL", name: "PostgreSQL" },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/da3f0d0b148ca00ec4f9b5b545eb505db039087e?width=218", alt: "Docker", name: "Docker" },
 ];
 
 export default function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [underlineStyle, setUnderlineStyle] = useState({});
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const navRef = useRef(null);
 
-  // Track active section for navigation
+  // Track active section for navigation and calculate underline position
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['about', 'skills', 'projects', 'certifications', 'contact'];
@@ -101,6 +104,26 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Calculate underline position based on active section
+  useEffect(() => {
+    if (navRef.current) {
+      const activeButton = navRef.current.querySelector(`[data-section="${activeSection}"]`);
+      if (activeButton) {
+        const navContainer = navRef.current;
+        const containerRect = navContainer.getBoundingClientRect();
+        const buttonRect = activeButton.getBoundingClientRect();
+        
+        const left = buttonRect.left - containerRect.left;
+        const width = buttonRect.width;
+        
+        setUnderlineStyle({
+          left: `${left}px`,
+          width: `${width}px`,
+        });
+      }
+    }
+  }, [activeSection, isMenuOpen]);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -119,8 +142,18 @@ export default function Index() {
     document.body.style.overflow = 'unset';
   };
 
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    setShowSuccessMessage(true);
+    
+    // Hide message after 3 seconds
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 3000);
+  };
+
   const navItems = [
-    { id: 'about', label: 'Sobre Mim'},
+    { id: 'about', label: 'Sobre Mim', hasArrow: true },
     { id: 'skills', label: 'Competências' },
     { id: 'projects', label: 'Projetos' },
     { id: 'certifications', label: 'Certificações' },
@@ -129,16 +162,17 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with enhanced navigation */}
+      {/* Header with enhanced navigation and bottom underline */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-light/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-black transition-colors duration-300 ease-in-out hover:text-orange">{"{eli}"}</div>
           
-          {/* Desktop Navigation with moving underline */}
-          <div className="hidden lg:flex items-center space-x-8 relative">
+          {/* Desktop Navigation with moving underline at bottom of header */}
+          <div className="hidden lg:flex items-center space-x-8 relative" ref={navRef}>
             {navItems.map((item) => (
               <button
                 key={item.id}
+                data-section={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`relative text-xl font-bold transition-all duration-300 ease-in-out flex items-center gap-2 ${
                   activeSection === item.id ? 'text-orange' : 'text-black hover:text-orange'
@@ -150,10 +184,6 @@ export default function Index() {
                   }`} />
                 )}
                 {item.label}
-                {/* Moving underline */}
-                <div className={`absolute -bottom-1 left-0 h-0.5 bg-orange transition-all duration-300 ease-in-out ${
-                  activeSection === item.id ? 'w-full' : 'w-0'
-                }`} />
               </button>
             ))}
           </div>
@@ -166,6 +196,14 @@ export default function Index() {
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </nav>
+
+        {/* Moving underline bar at bottom of header */}
+        <div className="hidden lg:block relative h-1">
+          <div 
+            className="absolute bottom-0 h-1 bg-orange transition-all duration-300 ease-in-out"
+            style={underlineStyle}
+          />
+        </div>
 
         {/* Mobile Menu with smooth animation */}
         <div className={`lg:hidden bg-white border-t transition-all duration-300 ease-in-out overflow-hidden ${
@@ -188,7 +226,7 @@ export default function Index() {
       </header>
 
       {/* Hero Section with improved spacing */}
-      <section id="about" className="pt-28 pb-16 bg-white">
+      <section id="about" className="pt-32 pb-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Mobile: Image first, Desktop: Text first */}
@@ -253,7 +291,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Skills Section with new layout */}
+      {/* Skills Section with technology hover effects */}
       <section id="skills" className="py-20 bg-dark-section text-white">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center mb-16">Competências</h2>
@@ -289,15 +327,25 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* Right side: 3x3 technology grid with 62px spacing */}
+              {/* Right side: 3x3 technology grid with enhanced hover effects */}
               <div className="flex justify-center lg:justify-end">
                 <div className="grid grid-cols-3 gap-[62px]">
                   {technologies.map((tech, index) => (
                     <div 
                       key={index} 
-                      className="w-20 h-20 lg:w-36 lg:h-36 bg-white rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl"
+                      className="group relative w-20 h-20 lg:w-36 lg:h-36 bg-white rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl cursor-pointer"
                     >
-                      <img src={tech.src} alt={tech.alt} className="w-12 h-12 lg:w-20 lg:h-20 object-contain" />
+                      <img 
+                        src={tech.src} 
+                        alt={tech.alt} 
+                        className="w-12 h-12 lg:w-20 lg:h-20 object-contain transition-opacity duration-300 ease-in-out group-hover:opacity-30" 
+                      />
+                      {/* Technology name overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                        <span className="text-black font-bold text-xs lg:text-sm text-center px-2">
+                          {tech.name}
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -457,13 +505,13 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Contact Section with smooth transitions */}
+      {/* Contact Section with success message */}
       <section id="contact" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold lg:font-extrabold text-center text-black mb-4">Contato</h2>
           <p className="text-xl md:text-2xl lg:text-3xl font-bold lg:font-extrabold text-orange text-center mb-12">Mande-me uma mensagem!</p>
           
-          <form className="max-w-4xl mx-auto space-y-8">
+          <form onSubmit={handleContactSubmit} className="max-w-4xl mx-auto space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <label className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold text-black mb-4">
@@ -509,6 +557,15 @@ export default function Index() {
                 Enviar mensagem
                 <Send className="w-6 h-6 md:w-8 md:h-8" />
               </button>
+            </div>
+
+            {/* Success Message */}
+            <div className={`text-center transition-all duration-500 ease-in-out ${
+              showSuccessMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <p className="text-lg md:text-xl lg:text-2xl font-semibold text-green-600 bg-green-50 px-6 py-3 rounded-lg inline-block">
+                Mensagem enviada com sucesso
+              </p>
             </div>
           </form>
         </div>
