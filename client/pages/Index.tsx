@@ -337,7 +337,7 @@ export default function Index() {
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <Code className="w-12 h-12 text-white" />
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal">Dev Back-End</h3>
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium lg:font-normal border-bottom-10">Dev Back-End</h3>
                   </div>
                   <div className="h-1 w-64 bg-orange"></div>
                   <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light lg:font-normal">
