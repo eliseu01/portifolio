@@ -165,7 +165,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background transition-colors duration-300">
       {/* Header with enhanced navigation and bottom underline */}
-      <header className="fixed top-50 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-foreground transition-colors duration-300 ease-in-out hover:text-orange">{"{eli}"}</div>
           
