@@ -26,7 +26,7 @@ const projects = [
     image:
       "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
     tags: ["Python", "Pandas", "Plotly", "FastAPI"],
-    github: "https://github.com/eliseucoelho/analytics-dashboard",
+    github: "https://github.com/eliseu01",
     live: "https://analytics-dashboard.eliseucoelho.dev",
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     image:
       "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
     tags: ["Node.js", "Express", "PostgreSQL", "JWT"],
-    github: "https://github.com/eliseucoelho/ecommerce-api",
+    github: "https://github.com/eliseu01",
     live: "https://api.eliseucoelho.dev",
   },
   {
@@ -48,7 +48,7 @@ const projects = [
     image:
       "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
     tags: ["Python", "Scikit-learn", "TensorFlow", "Docker"],
-    github: "https://github.com/eliseucoelho/ml-predictor",
+    github: "https://github.com/eliseu01",
     live: "https://ml-predictor.eliseucoelho.dev",
   },
   {
@@ -59,7 +59,7 @@ const projects = [
     image:
       "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
     tags: ["React", "TypeScript", "MongoDB", "Socket.io"],
-    github: "https://github.com/eliseucoelho/task-manager",
+    github: "https://github.com/eliseu01",
     live: "https://tasks.eliseucoelho.dev",
   },
   {
@@ -70,7 +70,7 @@ const projects = [
     image:
       "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
     tags: ["Vue.js", "Django", "PostgreSQL", "Chart.js"],
-    github: "https://github.com/eliseucoelho/finance-tracker",
+    github: "https://github.com/eliseu01",
     live: "https://finance.eliseucoelho.dev",
   },
   {
@@ -81,7 +81,7 @@ const projects = [
     image:
       "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
     tags: ["Python", "MQTT", "InfluxDB", "Grafana"],
-    github: "https://github.com/eliseucoelho/iot-monitor",
+    github: "https://github.com/eliseu01",
     live: "https://iot.eliseucoelho.dev",
   },
 ];
@@ -95,43 +95,43 @@ const technologies = [
   },
   {
     src: "https://api.builder.io/api/v1/image/assets/TEMP/f3ce4a13da491f4dba0abdba4308f49475964850?width=198",
-    alt: "JavaScript",
-    name: "JavaScript",
-  },
-  {
-    src: "https://api.builder.io/api/v1/image/assets/TEMP/b5418d22a726b275f48d75ced6a2108e7b76e151?width=130",
-    alt: "SQL",
-    name: "SQL",
-  },
-  {
-    src: "https://api.builder.io/api/v1/image/assets/TEMP/1f7c18b4abbccf6618feae0126bcfe9baf30b7a5?width=158",
-    alt: "React",
-    name: "React",
-  },
-  {
-    src: "https://api.builder.io/api/v1/image/assets/TEMP/f4a8a02c15e925dfd78a1218116175f327a1efd9?width=166",
-    alt: "Node.js",
-    name: "Node.js",
-  },
-  {
-    src: "https://api.builder.io/api/v1/image/assets/TEMP/b5054e07e41b2aad9bce03542e37ff6e56cdc56b?width=178",
-    alt: "Django",
-    name: "Django",
-  },
-  {
-    src: "https://api.builder.io/api/v1/image/assets/TEMP/c65cf2e6b83816aa44e52ab8a87aef0c375ef8d2?width=200",
-    alt: "MongoDB",
-    name: "MongoDB",
-  },
-  {
-    src: "https://api.builder.io/api/v1/image/assets/TEMP/cd4e9e18c3cf72c97fa889b03081a3badd52e899?width=210",
     alt: "PostgreSQL",
     name: "PostgreSQL",
   },
   {
+    src: "https://api.builder.io/api/v1/image/assets/TEMP/b5418d22a726b275f48d75ced6a2108e7b76e151?width=130",
+    alt: "Power BI",
+    name: "Power BI",
+  },
+  {
+    src: "https://api.builder.io/api/v1/image/assets/TEMP/1f7c18b4abbccf6618feae0126bcfe9baf30b7a5?width=158",
+    alt: "Java",
+    name: "Java",
+  },
+  {
+    src: "https://api.builder.io/api/v1/image/assets/TEMP/f4a8a02c15e925dfd78a1218116175f327a1efd9?width=166",
+    alt: "JavaScript",
+    name: "JavaScript",
+  },
+  {
+    src: "https://api.builder.io/api/v1/image/assets/TEMP/b5054e07e41b2aad9bce03542e37ff6e56cdc56b?width=178",
+    alt: "Node.js",
+    name: "Node.js",
+  },
+  {
+    src: "https://api.builder.io/api/v1/image/assets/TEMP/c65cf2e6b83816aa44e52ab8a87aef0c375ef8d2?width=200",
+    alt: "Spring Boot",
+    name: "Spring Boot",
+  },
+  {
+    src: "https://api.builder.io/api/v1/image/assets/TEMP/cd4e9e18c3cf72c97fa889b03081a3badd52e899?width=210",
+    alt: "GitHub",
+    name: "GitHub",
+  },
+  {
     src: "https://api.builder.io/api/v1/image/assets/TEMP/da3f0d0b148ca00ec4f9b5b545eb505db039087e?width=218",
-    alt: "Docker",
-    name: "Docker",
+    alt: "Git",
+    name: "Git",
   },
 ];
 
@@ -377,7 +377,7 @@ export default function Index() {
               {/* Social Links */}
               <div className="flex gap-4 pt-4">
                 <a
-                  href="https://linkedin.com/in/eliseucoelho"
+                  href="https://linkedin.com/in/eliseucoelhoo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-14 h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
@@ -387,7 +387,7 @@ export default function Index() {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com/eliseucoelho"
+                  href="https://github.com/eliseu01"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-14 h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
@@ -397,7 +397,7 @@ export default function Index() {
                   </svg>
                 </a>
                 <a
-                  href="https://wa.me/5511999999999"
+                  href="https://wa.me/5598981770708"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-14 h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
@@ -771,7 +771,7 @@ export default function Index() {
               {/* Social Links */}
               <div className="flex gap-4">
                 <a
-                  href="https://linkedin.com/in/eliseucoelho"
+                  href="https://linkedin.com/in/eliseucoelhoo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 lg:w-16 lg:h-16 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl"
@@ -784,7 +784,7 @@ export default function Index() {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com/eliseucoelho"
+                  href="https://github.com/eliseu01"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 lg:w-16 lg:h-16 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl"
@@ -797,7 +797,7 @@ export default function Index() {
                   </svg>
                 </a>
                 <a
-                  href="https://wa.me/5511999999999"
+                  href="https://wa.me/5598981770708"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 lg:w-16 lg:h-16 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl"
