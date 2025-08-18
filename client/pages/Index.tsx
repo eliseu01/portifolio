@@ -245,8 +245,8 @@ export default function Index() {
         className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out border-b border-border"
       >
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-foreground transition-colors duration-300 ease-in-out hover:text-orange">
-            {"{eli}"}
+          <div className="text-3xl font-bold text-foreground transition-colors duration-300 ease-in-out hover:text-orange">
+            {"{lzu}"}
           </div>
 
           {/* Desktop Navigation with moving underline at bottom of header */}
@@ -762,7 +762,7 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold lg:font-extrabold">
-                {"{eli}"}
+                {"{lzu}"}
               </h3>
               <p className="text-lg md:text-xl lg:text-2xl font-light lg:font-normal">
                 Acesse meu LinkedIn para ver mais sobre minhas experiências!
