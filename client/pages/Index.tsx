@@ -418,7 +418,7 @@ export default function Index() {
                 </a>
                 <button
                   onClick={handleDownloadCV}
-                  className="w-14 h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group"
+                  className="w-auto h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group"
                   title="Download CV"
                 >
                   <span>Baixar CV</span>
