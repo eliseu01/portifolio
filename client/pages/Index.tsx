@@ -367,7 +367,7 @@ export default function Index() {
                 Analista de Dados & Dev Back-End
               </p>
               <p className="text-base md:text-lg lg:text-lg text-foreground leading-relaxed max-w-2xl font-light lg:font-normal opacity-90">
-                Sou um desenvolvedor em formação com foco em back-end, dados e
+                <span className="font-bold">Graduando em Engenharia de Software</span> | Sou um desenvolvedor em formação com foco em back-end, dados e
                 uma base sólida em front-end. Atuo na interseção entre
                 engenharia de software e análise de dados, buscando criar
                 soluções escaláveis, eficientes e com boa experiência para o
