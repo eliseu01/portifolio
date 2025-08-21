@@ -386,7 +386,7 @@ export default function Index() {
                 usuário.
               </p>
 
-              {/* Social Links */}
+              {/* Social Links and CV Download */}
               <div className="flex gap-4 pt-4">
                 <a
                   href="https://linkedin.com/in/eliseucoelhoo"
