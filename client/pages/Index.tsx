@@ -230,6 +230,17 @@ export default function Index() {
     }, 3000);
   };
 
+  const handleDownloadCV = () => {
+    // Create a link element and trigger download
+    // For now, we'll use a placeholder URL - in a real scenario, this would be the actual CV file
+    const link = document.createElement('a');
+    link.href = '/placeholder.pdf'; // This would be replaced with actual CV file path
+    link.download = 'Eliseu_Coelho_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const navItems = [
     { id: "about", label: "Sobre Mim", hasArrow: true },
     { id: "skills", label: "Competências", hasArrow: true },
