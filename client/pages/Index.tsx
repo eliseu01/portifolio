@@ -422,7 +422,7 @@ export default function Index() {
                   title="Download CV"
                 >
                   <span className="font-bold mx-4">Baixar CV</span>
-                  <Download className="w-7 h-7 text-white group-hover:animate-bounce" />
+                  <Download className="w-7 h-7 text-white group-hover:animate-bounce mx-2" />
                 </button>
               </div>
             </div>
