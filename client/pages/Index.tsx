@@ -421,8 +421,8 @@ export default function Index() {
                   className="w-auto h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group"
                   title="Download CV"
                 >
-                  <span className="font-bold mx-3">Baixar CV</span>
-                  <Download className="w-7 h-7 text-white group-hover:animate-bounce mr-4" />
+                  <span className="font-bold ml-4 mr-3">Baixar CV</span>
+                  <Download className="w-6 h-6 text-white group-hover:animate-bounce mr-4" />
                 </button>
               </div>
             </div>
