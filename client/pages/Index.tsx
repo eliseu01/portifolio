@@ -231,14 +231,12 @@ export default function Index() {
   };
 
   const handleDownloadCV = () => {
-    // Create a link element and trigger download
-    // For now, we'll use a placeholder URL - in a real scenario, this would be the actual CV file
-    const link = document.createElement('a');
-    link.href = '/placeholder.pdf'; // This would be replaced with actual CV file path
-    link.download = 'Eliseu_Coelho_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // For demonstration purposes, show an alert
+    // In a real implementation, this would link to an actual CV file
+    alert('CV download will be available soon! Please contact me directly for my latest resume.');
+
+    // Alternative: Open LinkedIn profile as a fallback
+    // window.open('https://linkedin.com/in/eliseucoelhoo', '_blank');
   };
 
   const navItems = [
@@ -380,7 +378,7 @@ export default function Index() {
               </p>
               <p className="text-base md:text-lg lg:text-lg text-foreground leading-relaxed max-w-2xl font-light lg:font-normal opacity-90">
                 <span className="font-bold">Graduando em Engenharia de Software</span> | Sou um desenvolvedor em formação com foco em back-end, dados e
-                uma base sólida em front-end. Atuo na interseção entre
+                uma base s��lida em front-end. Atuo na interseção entre
                 engenharia de software e análise de dados, buscando criar
                 soluções escaláveis, eficientes e com boa experiência para o
                 usuário.
