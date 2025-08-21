@@ -13,6 +13,7 @@ import {
   ExternalLink,
   Sun,
   Moon,
+  Download,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
