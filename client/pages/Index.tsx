@@ -233,7 +233,9 @@ export default function Index() {
   const handleDownloadCV = () => {
     // For demonstration purposes, show an alert
     // In a real implementation, this would link to an actual CV file
-    alert('CV download will be available soon! Please contact me directly for my latest resume.');
+    alert(
+      "CV download will be available soon! Please contact me directly for my latest resume.",
+    );
 
     // Alternative: Open LinkedIn profile as a fallback
     // window.open('https://linkedin.com/in/eliseucoelhoo', '_blank');
@@ -377,7 +379,10 @@ export default function Index() {
                 Analista de Dados & Dev Back-End
               </p>
               <p className="text-base md:text-lg lg:text-lg text-foreground leading-relaxed max-w-2xl font-light lg:font-normal opacity-90">
-                <span className="font-bold">Graduando em Engenharia de Software</span> | Sou um desenvolvedor em formação com foco em back-end, dados e
+                <span className="font-bold">
+                  Graduando em Engenharia de Software
+                </span>{" "}
+                | Sou um desenvolvedor em formação com foco em back-end, dados e
                 uma base s��lida em front-end. Atuo na interseção entre
                 engenharia de software e análise de dados, buscando criar
                 soluções escaláveis, eficientes e com boa experiência para o
@@ -421,7 +426,9 @@ export default function Index() {
                   className="w-auto h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group"
                   title="Download CV"
                 >
-                  <span className="text-1xl font-bold ml-4 mr-3">Baixar CV</span>
+                  <span className="text-1xl font-bold ml-4 mr-3">
+                    Baixar CV
+                  </span>
                   <Download className="w-6 h-6 text-white group-hover:animate-bounce mr-4" />
                 </button>
               </div>
