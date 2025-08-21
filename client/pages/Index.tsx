@@ -13,6 +13,7 @@ import {
   ExternalLink,
   Sun,
   Moon,
+  Download,
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
@@ -229,6 +230,17 @@ export default function Index() {
     }, 3000);
   };
 
+  const handleDownloadCV = () => {
+    // For demonstration purposes, show an alert
+    // In a real implementation, this would link to an actual CV file
+    alert(
+      "CV download will be available soon! Please contact me directly for my latest resume.",
+    );
+
+    // Alternative: Open LinkedIn profile as a fallback
+    // window.open('https://linkedin.com/in/eliseucoelhoo', '_blank');
+  };
+
   const navItems = [
     { id: "about", label: "Sobre Mim", hasArrow: true },
     { id: "skills", label: "Competências", hasArrow: true },
@@ -367,14 +379,17 @@ export default function Index() {
                 Analista de Dados & Dev Back-End
               </p>
               <p className="text-base md:text-lg lg:text-lg text-foreground leading-relaxed max-w-2xl font-light lg:font-normal opacity-90">
-                <span className="font-bold">Graduando em Engenharia de Software</span> | Sou um desenvolvedor em formação com foco em back-end, dados e
-                uma base sólida em front-end. Atuo na interseção entre
+                <span className="font-bold">
+                  Graduando em Engenharia de Software
+                </span>{" "}
+                | Sou um desenvolvedor em formação com foco em back-end, dados e
+                uma base s��lida em front-end. Atuo na interseção entre
                 engenharia de software e análise de dados, buscando criar
                 soluções escaláveis, eficientes e com boa experiência para o
                 usuário.
               </p>
 
-              {/* Social Links */}
+              {/* Social Links and CV Download */}
               <div className="flex gap-4 pt-4">
                 <a
                   href="https://linkedin.com/in/eliseucoelhoo"
@@ -406,6 +421,16 @@ export default function Index() {
                     <path d="M18.5235 0C8.33639 0 0.0434503 8.37641 0.03975 18.6749C0.0378998 21.9668 0.890804 25.1806 2.50786 28.0124L0 37.4083L9.68092 35.0958C12.3803 36.5847 15.4191 37.3662 18.5126 37.3681H18.5199C28.7051 37.3681 36.9944 28.9898 37 18.6932C37.0037 13.701 35.0834 9.00742 31.594 5.47607C28.1046 1.9466 23.4672 0.00187041 18.5235 0ZM18.5199 3.74083C22.4719 3.7427 26.1858 5.30037 28.9777 8.12096C31.7696 10.9453 33.3033 14.6981 33.2996 18.6895C33.2959 26.9268 26.6682 33.6273 18.5163 33.6273C16.05 33.6254 13.607 32.9994 11.4552 31.8116L10.2085 31.1249L8.83172 31.4536L5.18918 32.3231L6.07813 28.9841L6.47925 27.4863L5.71315 26.142C4.42173 23.8825 3.73826 21.2991 3.74011 18.6749C3.74381 10.4414 10.3735 3.74083 18.5199 3.74083ZM11.9828 10.0535C11.6738 10.0535 11.1743 10.1704 10.7506 10.638C10.3269 11.1037 9.13165 12.2317 9.13165 14.5286C9.13165 16.8255 10.7867 19.0457 11.018 19.3581C11.2474 19.6685 14.2126 24.5309 18.9065 26.4013C22.8067 27.9556 23.5988 27.6489 24.4462 27.5703C25.2936 27.4937 27.18 26.4433 27.5648 25.3529C27.9496 24.2624 27.9505 23.3244 27.8358 23.1318C27.7211 22.9372 27.413 22.8212 26.9505 22.5874C26.4898 22.3536 24.2195 21.2266 23.7958 21.0714C23.3721 20.9161 23.0622 20.8376 22.7551 21.3052C22.4479 21.7728 21.5653 22.8213 21.2951 23.1318C21.025 23.4441 20.7567 23.4861 20.2942 23.2523C19.8316 23.0166 18.3444 22.5224 16.5794 20.9326C15.2065 19.6962 14.2802 18.1708 14.0101 17.7032C13.7418 17.2374 13.9848 16.9816 14.216 16.7497C14.4233 16.5402 14.675 16.2045 14.9062 15.9314C15.1357 15.6583 15.2152 15.4638 15.3688 15.1533C15.5223 14.8428 15.4437 14.5688 15.329 14.335C15.2143 14.1012 14.316 11.7958 13.9053 10.8718C13.5593 10.0956 13.1939 10.0775 12.8645 10.0644C12.5963 10.0532 12.2899 10.0535 11.9828 10.0535Z" />
                   </svg>
                 </a>
+                <button
+                  onClick={handleDownloadCV}
+                  className="w-auto h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group"
+                  title="Download CV"
+                >
+                  <span className="text-1xl font-bold ml-4 mr-3">
+                    Baixar CV
+                  </span>
+                  <Download className="w-6 h-6 text-white group-hover:animate-bounce mr-4" />
+                </button>
               </div>
             </div>
 
