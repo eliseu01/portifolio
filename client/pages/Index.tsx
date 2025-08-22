@@ -21,36 +21,25 @@ import { useTheme } from "../hooks/useTheme";
 const projects = [
   {
     id: 1,
-    title: "Data Analytics Dashboard",
+    title: "Gerencimento de Estoque de Interfolhados",
     description:
-      "Comprehensive dashboard for data visualization and business intelligence with real-time analytics and automated reporting features.",
+      "Gestão de Estoque | Solução vencedora no Jovem Tech para prever demanda, simular descongelamento e otimizar estoque no varejo alimentar.",
     image:
       "https://github.com/eliseu01/portifolio/blob/main/assets/project1.png?raw=true",
-    tags: ["Python", "Pandas", "Plotly", "FastAPI"],
-    github: "https://github.com/eliseu01",
-    live: "https://analytics-dashboard.eliseucoelho.dev",
+    tags: ["Prophet", "Python", "Pandas", "Machine Learning"],
+    github: "https://github.com/fhevila/JovemTech_Filial7_Descongelamento_PulseMinds",
+    live: "https://pulseminds.vercel.app/",
   },
   {
     id: 2,
-    title: "E-commerce API",
+    title: "Portifólio Pessoal - Eliseu Coelho",
     description:
-      "RESTful API for e-commerce platform with payment integration, inventory management, and user authentication system.",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
-    tags: ["Node.js", "Express", "PostgreSQL", "JWT"],
-    github: "https://github.com/eliseu01",
-    live: "https://api.eliseucoelho.dev",
-  },
-  {
-    id: 3,
-    title: "Machine Learning Predictor",
-    description:
-      "ML model for sales prediction using historical data analysis with automated feature engineering and model optimization.",
+      "Projeto desenvolvido para aplicar conceitos práticos de back-end e análise de dados, com foco em soluções eficientes, escaláveis e bem estruturadas.",
     image:
       "https://github.com/eliseu01/portifolio/blob/main/assets/project3.png?raw=true",
-    tags: ["Python", "Scikit-learn", "TensorFlow", "Docker"],
-    github: "https://github.com/eliseu01",
-    live: "https://ml-predictor.eliseucoelho.dev",
+    tags: ["React", "TypeScript", "Vercel", "", "Node.js"],
+    github: "https://github.com/eliseu01/portifolio",
+    live: "https://eliseucoelho.vercel.app",
   },
 ];
 
@@ -390,13 +379,13 @@ export default function Index() {
                 </a>
                 <button
                   onClick={handleDownloadCV}
-                  className="w-auto h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group"
+                  className="w-48 h-14 bg-orange rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg group"
                   title="Download CV"
                 >
-                  <span className="text-1xl font-bold ml-4 mr-3">
+                  <span className="text-white text-1xl font-extrabold ml-4 mr-3">
                     Baixar CV
                   </span>
-                  <Download className="w-6 h-6 text-white group-hover:animate-bounce mr-4" />
+                  <Download className="w-6 h-6 text-white  mr-4" />
                 </button>
               </div>
             </div>
@@ -511,11 +500,11 @@ export default function Index() {
             Projetos
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-40 max-w-5xl mx-auto ">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-card rounded-3xl shadow-xl overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer border border-border"
+                className="bg-card rounded-3xl shadow-xl overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer border border-border flex flex-col"
                 onClick={() => openProjectModal(project)}
               >
                 <img
@@ -523,7 +512,7 @@ export default function Index() {
                   alt={project.title}
                   className="w-full h-48 lg:h-64 object-cover"
                 />
-                <div className="p-6 lg:p-8">
+                <div className="p-6 lg:p-8 flex-1 flex flex-col">
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold lg:font-extrabold text-foreground mb-3">
                     {project.title}
                   </h3>
@@ -544,13 +533,15 @@ export default function Index() {
                     {project.description.substring(0, 120)}...
                   </p>
 
-                  {/* Animated button */}
-                  <button className="group bg-orange text-white px-6 py-3 rounded-full font-poppins font-semibold text-lg flex items-center gap-2 transition-all duration-300 ease-in-out hover:bg-orange/90 hover:shadow-lg relative overflow-hidden">
-                    <ChevronRight className="w-5 h-5 transition-all duration-300 ease-in-out group-hover:translate-x-1" />
-                    <span className="transition-all duration-300 ease-in-out group-hover:translate-x-1 ">
-                      Ver projeto
-                    </span>
-                  </button>
+                  {/* Animated button fixed at bottom */}
+                  <div className="mt-auto">
+                    <button className="group bg-orange text-white px-6 py-3 rounded-full font-poppins font-semibold text-lg flex items-center gap-2 transition-all duration-300 ease-in-out hover:bg-orange/90 hover:shadow-lg relative overflow-hidden ">
+                      <ChevronRight className="w-5 h-5 transition-all duration-300 ease-in-out group-hover:translate-x-1" />
+                      <span className="transition-all duration-300 ease-in-out group-hover:translate-x-1 ">
+                        Ver projeto
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -641,27 +632,49 @@ export default function Index() {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((cert) => (
+            {[
+              {
+                title: "Lógica de Programação: praticando com desafios",
+                subtitle: "Alura",
+              },
+              {
+                title: "JavaScript: manipulando elementos com o DOM",
+                subtitle: "Alura",
+              },
+              {
+                title: "IA: explorando o potencial da IA generativa",
+                subtitle: "Alura",
+              },
+              {
+                title: "Java: criando a sua primeira aplicação",
+                subtitle: "Alura",
+              },
+              {
+                title: "Git e Github: compartilhando e colaborando em projetos",
+                subtitle: "Alura",
+              },
+              {
+                title: "Aprendendo a aprender: técnincas para o seu autodesenvolvimento",
+                subtitle: "Alura",
+              },
+            ].map((cert, idx) => (
               <div
-                key={cert}
-                className={`${isDark ? "bg-background border-border" : "bg-dark-section border-gray-500"} border-2 rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:border-orange/30`}
+                key={idx}
+                className={`${isDark ? "bg-background border-border" : "bg-dark-section border-gray-500"} border-2 rounded-3xl overflow-hidden shadow-2xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:border-orange/30 flex`}
+                style={{ minHeight: "160px" }} // Ajuste aqui a altura mínima desejada
               >
-                <div className="flex">
-                  <div className="w-1/3 bg-white rounded-l-3xl flex items-center justify-center p-6">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/215381f71beda57e584ac927a1150d78f584b669?width=180"
-                      alt="Oracle Certificate"
-                      className="w-20 h-20 object-contain"
-                    />
-                  </div>
-                  <div className="flex-1 p-6">
+                <div className="w-1/3 bg-white rounded-l-3xl flex items-center justify-center p-6">
+                  <svg viewBox="0 0 56 26" width="75" height="35" xmlns="http://www.w3.org/2000/svg">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M9.1 15.887a.726.726 0 01-.36.52c-.192.124-.36.186-.53.248-.362.125-.743.25-1.146.395-.425.145-.806.29-1.146.395-.424.145-.827.27-1.21.415a3.57 3.57 0 00-.805.478 3.422 3.422 0 00-.594.706c-.17.29-.277.664-.277 1.1 0 .873.212 1.537.637 1.952.424.437 1.21.644 2.375.644 1.188 0 1.994-.228 2.42-.685.423-.457.635-1.1.635-1.93v-4.238zm-3.055-9.2c2.08 0 3.607.395 4.582 1.205.976.79 1.464 1.806 1.464 3.01v10.26c0 .415-.084.872-.232 1.37-.15.5-.446.956-.913 1.37-.445.417-1.06.77-1.845 1.04-.785.27-1.803.415-3.055.415-1.25 0-2.27-.145-3.054-.415-.784-.27-1.4-.623-1.845-1.04a3.326 3.326 0 01-.912-1.37C.085 22.035 0 21.578 0 21.163v-1.64c0-.873.233-1.683.7-2.39.467-.726 1.124-1.224 1.973-1.536.424-.145.912-.29 1.463-.477.552-.188 1.06-.375 1.57-.54.51-.167.955-.334 1.336-.48a9.26 9.26 0 01.7-.248l.382-.187c.15-.083.297-.208.446-.374.148-.165.275-.352.382-.56a1.6 1.6 0 00.17-.726v-.665a1.69 1.69 0 00-.15-.707c-.084-.25-.254-.478-.487-.685-.233-.208-.552-.374-.933-.5-.382-.123-.89-.186-1.464-.186-1.188 0-1.973.23-2.397.706-.36.416-.572.935-.614 1.516 0 .125-.106.208-.234.208l-2.587.042a.233.233 0 01-.234-.23v-.6c0-.583.107-1.123.34-1.642.234-.52.595-.955 1.082-1.33.488-.373 1.125-.684 1.888-.892.743-.25 1.655-.353 2.715-.353zm46.9 9.2a.726.726 0 01-.36.52c-.19.124-.36.186-.53.248-.36.125-.743.25-1.146.395-.425.145-.807.29-1.146.395-.425.145-.828.27-1.21.415a3.57 3.57 0 00-.806.478 3.422 3.422 0 00-.593.706c-.17.29-.276.664-.276 1.1 0 .873.21 1.537.635 1.952.424.437 1.21.644 2.376.644 1.19 0 1.995-.228 2.42-.685.423-.457.635-1.1.635-1.93v-4.238zm-3.054-9.2c2.08 0 3.607.395 4.583 1.205.975.79 1.463 1.806 1.463 3.01v10.26c0 .415-.084.872-.233 1.37-.148.5-.445.956-.912 1.37-.445.417-1.06.77-1.845 1.04-.784.27-1.803.415-3.054.415-1.25 0-2.27-.145-3.054-.415-.784-.27-1.4-.623-1.845-1.04a3.325 3.325 0 01-.91-1.37c-.15-.498-.235-.955-.235-1.37v-1.64c0-.873.234-1.683.7-2.39.467-.726 1.125-1.224 1.973-1.536.424-.145.912-.29 1.464-.477.55-.188 1.06-.375 1.57-.54.51-.167.954-.334 1.336-.48a9.26 9.26 0 01.7-.248l.382-.187c.148-.083.297-.208.445-.374a2.54 2.54 0 00.382-.56 1.6 1.6 0 00.17-.726v-.665a1.69 1.69 0 00-.15-.707c-.084-.25-.253-.478-.487-.685-.233-.208-.55-.374-.933-.5-.382-.123-.89-.186-1.464-.186-1.188 0-1.972.23-2.397.706-.36.416-.572.935-.615 1.516 0 .125-.105.208-.232.208H44.12a.233.233 0 01-.232-.228v-.603c0-.58.106-1.12.34-1.64.233-.518.593-.955 1.08-1.328.49-.374 1.125-.686 1.89-.893.72-.21 1.632-.313 2.693-.313zm-9.1.083h1.698c.148 0 .254.146.212.29l-.573 2.16c-.02.105-.127.167-.212.167h-1.188c-.636 0-1.145.083-1.548.25-.383.165-.7.352-.913.58-.212.23-.34.457-.403.686a2.74 2.74 0 00-.085.685v13.354a.233.233 0 01-.235.228H35a.233.233 0 01-.233-.228V10.985c0-.248.042-.622.148-1.1.085-.477.34-.934.743-1.412.403-.457.997-.872 1.803-1.204.807-.334 1.91-.5 3.33-.5zm-8.57 13.935v.623c0 .27-.04.644-.147 1.122-.085.456-.34.934-.743 1.39-.403.458-.997.873-1.803 1.205-.806.333-1.91.5-3.33.5-1.42 0-2.524-.167-3.33-.5-.806-.332-1.4-.726-1.803-1.204-.403-.456-.658-.934-.743-1.41-.084-.48-.147-.832-.147-1.102V7.352c0-.125.106-.23.233-.23h2.524c.128 0 .234.105.234.23v13.083c0 .436.063.748.127.997.065.25.192.498.383.706.19.228.488.415.89.56.382.146.913.23 1.57.23.68 0 1.23-.084 1.634-.23.403-.145.7-.332.912-.54.21-.207.36-.435.423-.685.064-.25.15-.456.15-1.06V7.332c0-.124.105-.228.232-.228h2.524c.126 0 .232.104.232.23v13.373h-.02zM14.85.105h2.525c.127 0 .233.103.233.227v24.734a.233.233 0 01-.233.23H14.85a.233.233 0 01-.233-.23V.332c.02-.124.106-.228.233-.228z" fill="#167bf7" fill-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div className="flex-1 p-6 flex flex-col justify-center">
                     <h3 className="text-base md:text-lg lg:text-xl font-semibold lg:font-bold text-white mb-2">
-                      Oracle Certified Associate, Java SE 8 Programmer
+                      {cert.title}
                     </h3>
                     <p className="text-sm lg:text-base text-white/80 italic font-light lg:font-normal">
-                      Oracle
+                      {cert.subtitle}
                     </p>
-                  </div>
                 </div>
               </div>
             ))}
