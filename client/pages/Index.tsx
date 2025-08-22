@@ -25,7 +25,7 @@ const projects = [
     description:
       "Comprehensive dashboard for data visualization and business intelligence with real-time analytics and automated reporting features.",
     image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
+      "https://drive.google.com/uc?export=view&id=132jFSTKI0Kk78A1gDUfJIuGsD5M5Qy-5",
     tags: ["Python", "Pandas", "Plotly", "FastAPI"],
     github: "https://github.com/eliseu01",
     live: "https://analytics-dashboard.eliseucoelho.dev",
@@ -51,39 +51,6 @@ const projects = [
     tags: ["Python", "Scikit-learn", "TensorFlow", "Docker"],
     github: "https://github.com/eliseu01",
     live: "https://ml-predictor.eliseucoelho.dev",
-  },
-  {
-    id: 4,
-    title: "Task Management App",
-    description:
-      "Full-stack task management application with real-time collaboration, file sharing, and project timeline tracking.",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
-    tags: ["React", "TypeScript", "MongoDB", "Socket.io"],
-    github: "https://github.com/eliseu01",
-    live: "https://tasks.eliseucoelho.dev",
-  },
-  {
-    id: 5,
-    title: "Financial Tracker",
-    description:
-      "Personal finance management tool with expense categorization, budget planning, and financial goal tracking features.",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
-    tags: ["Vue.js", "Django", "PostgreSQL", "Chart.js"],
-    github: "https://github.com/eliseu01",
-    live: "https://finance.eliseucoelho.dev",
-  },
-  {
-    id: 6,
-    title: "IoT Monitoring System",
-    description:
-      "Real-time IoT device monitoring system with sensor data collection, alerting, and historical data analysis.",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
-    tags: ["Python", "MQTT", "InfluxDB", "Grafana"],
-    github: "https://github.com/eliseu01",
-    live: "https://iot.eliseucoelho.dev",
   },
 ];
 
@@ -383,7 +350,7 @@ export default function Index() {
                   Graduando em Engenharia de Software
                 </span>{" "}
                 | Sou um desenvolvedor em formação com foco em back-end, dados e
-                uma base s��lida em front-end. Atuo na interseção entre
+                uma base sólida em front-end. Atuo na interseção entre
                 engenharia de software e análise de dados, buscando criar
                 soluções escaláveis, eficientes e com boa experiência para o
                 usuário.
@@ -598,7 +565,7 @@ export default function Index() {
           onClick={closeProjectModal}
         >
           <div
-            className="bg-background rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl transform transition-all duration-300 ease-in-out scale-100 border border-border"
+            className="bg-background rounded-3xl max-w-6xl w-full h-full max-h-[80vh] overflow-hidden shadow-2xl transform transition-all duration-300 ease-in-out scale-100 border border-border"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
@@ -612,7 +579,7 @@ export default function Index() {
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-64 lg:h-80 object-cover"
+                className="w-full h-64 lg:h-96 object-cover"
               />
             </div>
 
