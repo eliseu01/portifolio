@@ -25,7 +25,7 @@ const projects = [
     description:
       "Comprehensive dashboard for data visualization and business intelligence with real-time analytics and automated reporting features.",
     image:
-      "https://drive.google.com/uc?export=view&id=132jFSTKI0Kk78A1gDUfJIuGsD5M5Qy-5",
+      "https://github.com/eliseu01/portifolio/blob/main/assets/project1.png?raw=true",
     tags: ["Python", "Pandas", "Plotly", "FastAPI"],
     github: "https://github.com/eliseu01",
     live: "https://analytics-dashboard.eliseucoelho.dev",
@@ -47,7 +47,7 @@ const projects = [
     description:
       "ML model for sales prediction using historical data analysis with automated feature engineering and model optimization.",
     image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/b0d6eb737e2225705c929fb0c30e3d05ea4f3c31?width=911",
+      "https://github.com/eliseu01/portifolio/blob/main/assets/project3.png?raw=true",
     tags: ["Python", "Scikit-learn", "TensorFlow", "Docker"],
     github: "https://github.com/eliseu01",
     live: "https://ml-predictor.eliseucoelho.dev",
